@@ -1,0 +1,24 @@
+<% if !@appearance.valid? %>
+    <ul>
+        <% @appearance.errors.full_messages.each do |err| %>
+            <%=err%>
+        <% end %>
+    </ul>
+<% end %>
+
+    <%= form_for @appearance do |f| %>
+        <%= f.label :guest_id, "Select a Guest:" %>
+        <%= f.collection_select :guest_id, Guest.all, :id, :name %><br>
+
+        <%= f.label :episode_id, "Select an Episode:" %>
+        <%= f.collection_select :episode_id, Episode.all, :id, :number %><br>
+        
+        <%= f.label :rating, "Rate it:" %>
+        <%= f.text_field :rating %><br>
+        <% if false %>
+        <%= select_tag :rating, options_for_select(1..5) %>
+        
+        <% end %>
+        <%= f.submit %>
+    <% end %>
+

@@ -1,0 +1,13 @@
+<h2>Guest Show</h2>
+
+<%=@guest.name%>
+<p>List of episodes</p>
+<ul>
+    <% @guest.sorted_appearances.each do |app|%>
+        <li>   
+            <%="rating: #{app.rating}" %><br>
+            <%= "episode date: #{app.episode.date}" %>
+        </li>
+    <% end %>
+    
+</ul>
